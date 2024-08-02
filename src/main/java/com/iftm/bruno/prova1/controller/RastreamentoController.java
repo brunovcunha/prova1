@@ -8,6 +8,7 @@ import com.iftm.bruno.prova1.service.RastreamentoService;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("rastreamentos")
 public class RastreamentoController {
     
+    @Autowired
     private RastreamentoService service;
 
     @GetMapping

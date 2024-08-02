@@ -2,36 +2,53 @@ package com.iftm.bruno.prova1.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iftm.bruno.prova1.model.Pacote;
+import com.iftm.bruno.prova1.model.Rastreamento;
+import com.iftm.bruno.prova1.repository.PacoteRepository;
+import com.iftm.bruno.prova1.repository.RastreamentoRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class PacoteService {
 
+    @Autowired
+    private PacoteRepository repository;
+
+    @Autowired
+    private RastreamentoRepository rastreamentoRepository;
+
+    @Transactional
     public void addPacote(Pacote pacote) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPacote'");
+        for (Rastreamento rastreamento : pacote.getRastreamentos()) {
+            rastreamentoRepository.save(rastreamento);
+        }
+        repository.save(pacote);
     }
-
     public List<Pacote> getPacotes() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPacotes'");
+        return repository.findAll();
     }
 
-    public Object getPacotePorId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPacotePorId'");
+    public Pacote getPacotePorId(Long id) {
+        return repository.findById(id).get();
     }
 
     public void atualizarPacote(Long id, Pacote pacote) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarPacote'");
+        Pacote pacoteAtual = getPacotePorId(id);
+
+        pacoteAtual.setDestinatario(pacote.getDestinatario());
+        pacoteAtual.setEndereco(pacote.getEndereco());
+        pacoteAtual.setId(pacote.getStatus());
+
+        repository.save(pacoteAtual);
+
     }
 
     public void deletePacote(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePacote'");
+        repository.deleteById(id);
     }
-    
+
 }
