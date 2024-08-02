@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "endereco")
@@ -28,7 +27,22 @@ public class Endereco {
 
 
     public String getEnderecoCompleto() {
-         return "teste";
+         return "Rua: " + rua + "/n" +
+                "Numero: " + numero + "/n" + 
+                "Cidade: " + cidade + "/n" +
+                "Estado: " + estado + "/n" +
+                "Cep: " + cep;
     }
+
+
+    public Endereco(String rua, String numero, String cidade, String estado, String cep) {
+        this.rua = rua;
+        this.numero = numero;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+    }
+
+    
     
 }

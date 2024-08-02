@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "rastreamento")
@@ -26,5 +25,20 @@ public class Rastreamento {
     private String status;
     private String localizacao;
 
+
+    public String getResumo() {
+        return "data-hora: " + dataHora + "/n" +
+                "Status: " + status + "/n" +
+                "Localizacao: " + localizacao;
+    }
+
+
+    public Rastreamento(Date dataHora, String status, String localizacao) {
+        this.dataHora = dataHora;
+        this.status = status;
+        this.localizacao = localizacao;
+    }
+
+    
 
 }
