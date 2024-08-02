@@ -1,8 +1,14 @@
 
 
+
 ENDERECO
 
+GET
+
+http://localhost:8080/enderecos
+
 POST
+
 {
   "rua": "Rua 123",
   "numero": "456",
@@ -13,9 +19,13 @@ POST
 
 
 
+
 PACOTE
 
-POST
+
+
+POST http://localhost:8080/pacotes
+
 {
   "id": "12345",
   "destinatario": "João da Silva",
@@ -42,3 +52,17 @@ POST
   ]
 }
 
+GET http://localhost:8080/pacotes
+
+GETBYID http://localhost:8080/pacotes/1
+
+PUT http://localhost:8080/pacotes/1
+{
+  "destinatario": "Maria da Silva"
+}
+
+DELETE http://localhost:8080/pacotes/1
+
+RASTREAMENTOS
+GET
+http://localhost:8080/rastreamentos

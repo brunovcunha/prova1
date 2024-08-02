@@ -38,7 +38,7 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Endereco>> getEndereco(@RequestParam String param) {
+    public ResponseEntity<List<Endereco>> getEndereco() {
 
         List<Endereco> enderecos = service.getEnderecos();
 
