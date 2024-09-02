@@ -8,15 +8,11 @@ import com.iftm.bruno.prova1.service.EnderecoService;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 /**
  * EnderecoController
@@ -26,15 +22,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/enderecos")
 public class EnderecoController {
 
-    @Autowired
     private EnderecoService service;
+
+    public EnderecoController(EnderecoService service) {
+        this.service = service;
+    }
 
     @PostMapping
     public ResponseEntity<Endereco> enderecos(@RequestBody Endereco endereco) {
         service.addEndereco(endereco);
-
         return ResponseEntity.ok(endereco);
-
     }
 
     @GetMapping
@@ -42,10 +39,7 @@ public class EnderecoController {
 
         List<Endereco> enderecos = service.getEnderecos();
 
-        return new ResponseEntity<>(enderecos, HttpStatus.OK); 
+        return new ResponseEntity<>(enderecos, HttpStatus.OK);
     }
-    
-    
 
-    
 }

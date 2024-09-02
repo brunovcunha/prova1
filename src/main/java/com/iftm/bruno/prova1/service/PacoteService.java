@@ -2,7 +2,6 @@ package com.iftm.bruno.prova1.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iftm.bruno.prova1.model.Pacote;
@@ -15,11 +14,13 @@ import jakarta.transaction.Transactional;
 @Service
 public class PacoteService {
 
-    @Autowired
     private PacoteRepository repository;
-
-    @Autowired
     private RastreamentoRepository rastreamentoRepository;
+
+    public PacoteService(PacoteRepository repository, RastreamentoRepository rastreamentoRepository) {
+        this.repository = repository;
+        this.rastreamentoRepository = rastreamentoRepository;
+    }
 
     @Transactional
     public void addPacote(Pacote pacote) {
@@ -28,6 +29,7 @@ public class PacoteService {
         }
         repository.save(pacote);
     }
+
     public List<Pacote> getPacotes() {
         return repository.findAll();
     }
