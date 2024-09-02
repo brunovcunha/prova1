@@ -43,7 +43,7 @@ public class Pacote {
 
         Rastreamento rastreamentoAtual = new Rastreamento(dataHora, novoStatus, localizacao); 
 
-        if(novoStatus == "pendente" || novoStatus == "em transito" || novoStatus == "entregue") {
+        if("pendente".equals(novoStatus) || "em transito".equals(novoStatus) || "entregue".equals(novoStatus)) {
             this.status = novoStatus;
             rastreamentos.add(rastreamentoAtual);
         } else {
