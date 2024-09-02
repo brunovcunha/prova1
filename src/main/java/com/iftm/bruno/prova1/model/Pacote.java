@@ -47,18 +47,20 @@ public class Pacote {
             this.status = novoStatus;
             rastreamentos.add(rastreamentoAtual);
         } else {
-            throw new RuntimeException("status invalido");
+            throw new IllegalArgumentException("status invalido");
         }
 
     }
 
     public String consultarInformacoes() {
 
-        String historicoRastreio = "";
+        StringBuilder bld = new StringBuilder();
 
         for (Rastreamento rastreamento : rastreamentos) {
-            historicoRastreio += rastreamento.getResumo();
+            bld.append(rastreamento.getResumo());
         }
+
+        String historicoRastreio = bld.toString();
 
         return  "Id: " + id + "/n" +
                 "Destinatario: " + destinatario + "/n" +    
