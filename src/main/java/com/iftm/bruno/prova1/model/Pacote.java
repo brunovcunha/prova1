@@ -47,7 +47,7 @@ public class Pacote {
             this.status = novoStatus;
             rastreamentos.add(rastreamentoAtual);
         } else {
-            throw new RuntimeException("status invalido");
+            throw new IllegalArgumentException("status invalido");
         }
 
     }
